@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.Dialog;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -24,7 +25,7 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
-    //se declaracion genral del arrelgo
+    // se define un objeto ArrayList usando el modelo creado
     ArrayList<Model>models=new ArrayList<>();
 
     RecyclerView mRecycleView;
@@ -42,6 +43,8 @@ public class MainActivity extends AppCompatActivity {
 
     private ArrayList<Model> getMyList(){
         Model m=new Model();
+
+        // estableciendo valores a los atributos según el modelo
 
         m.setTitle("Facultativa II");
         m.setDescription ("Descripción de Facultativa II");
@@ -88,13 +91,13 @@ public class MainActivity extends AppCompatActivity {
 
         switch (item.getItemId()) {
             case R.id.itemclosed:
-                this.finish();
+                System.exit(0);
             case R.id.itemguardar:
 
-                final Dialog dlg = new Dialog(this);
-                dlg.setContentView(R.layout.activity_activityadd);
+                final Dialog dlg = new Dialog(this); //
+                dlg.setContentView(R.layout.activity_activityadd);//Referenciando elementos de activity_activityadd
                 dlg.setTitle("Registro Asignatura");
-                dlg.setCancelable(false);
+                dlg.setCancelable(false);// evita que que el dialogo pueda cerrarse
 
                 Button buttonagregar = (Button) dlg.findViewById(R.id.btnRegistrar);
                 Button buttoncancelar = (Button) dlg.findViewById(R.id.btncancelar);
@@ -109,21 +112,29 @@ public class MainActivity extends AppCompatActivity {
                         EditText editText_hora=(EditText)dlg.findViewById(R.id.editText_hora);
                         EditText editText_fechaentr=(EditText)dlg.findViewById(R.id.editText_ProxTrab);
 
-                        Model model=new Model();//
-                        model.setTitle(editText_asigna.getText().toString());
-                        model.setDescription(editText_descrip.getText().toString());
-                        model.setNameP(editText_profe.getText().toString());
-                        model.setImg(R.drawable.book);
-                        model.setDayC(editText_dia.getText().toString());
-                        model.setHora(editText_hora.getText().toString());
-                        model.setWork(editText_fechaentr.getText().toString());
+                            //verficamos que los campos esten llenos
+                        if ((editText_asigna.getText().toString().contentEquals("")) || (editText_descrip.getText().toString().contentEquals("")) || (editText_profe.getText().toString().contentEquals("")) || (editText_dia.getText().toString().contentEquals("")) || (editText_hora.getText().toString().contentEquals("")) || (editText_fechaentr.getText().toString().contentEquals(""))) {
 
+                            Toast.makeText(MainActivity.this, "No puede quedar ningún campo en blanco", Toast.LENGTH_LONG).show();;
+                        }
+                        else {
 
+                            Model model = new Model(); // se define un objeto del modelo creado en la clase Modelo
+                            model.setTitle(editText_asigna.getText().toString());
+                            model.setDescription(editText_descrip.getText().toString());
+                            model.setNameP(editText_profe.getText().toString());
+                            model.setImg(R.drawable.book);
+                            model.setDayC(editText_dia.getText().toString());
+                            model.setHora(editText_hora.getText().toString());
+                            model.setWork(editText_fechaentr.getText().toString());
 
-                        models.add(model);/// aguardar los datos de
-                        myAdapter= new Adapter(v.getContext(), models);//recargae el rcycler view
-                        mRecycleView.setAdapter(myAdapter);
-                        dlg.cancel();
+                            models.add(model);/// guardar los datos obetenidos al ArrayList
+                            myAdapter= new Adapter(v.getContext(), models);
+                            mRecycleView.setAdapter(myAdapter);//actualizamos el RecyclerView
+                            dlg.cancel();//Cerramos el dialogo
+
+                        }
+
                     }
 
 

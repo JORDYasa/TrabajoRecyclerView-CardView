@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 public class MyHolder  extends RecyclerView.ViewHolder implements View.OnClickListener {
      ImageView mImagenView;
-     TextView mTitle, mDescription, mNameP, mDayC, mHora, mWork;
+     TextView mTitle, mDescription;
 
     private ItemClickListener itemClickListener;
 

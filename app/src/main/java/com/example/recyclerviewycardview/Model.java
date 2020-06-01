@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Model {
 
-    static ArrayList<Model> Models=new ArrayList<Model>();
+    /*static ArrayList<Model> Models=new ArrayList<Model>();
 
     public static void AddModel (Model model) {
         Models.add(model);
@@ -12,15 +12,19 @@ public class Model {
 
     public static ArrayList<Model> getModels(){
         return Models;
-    }
+    }*/
 
     private String title;
     private String description;
     private int img;
-    private String nameP;
-    private String dayC;
-    private String hora;
-    private String work;
+
+    // Definición de varibles para guardar datos orientados en el trabajo de RecyclerView y Cardview
+    private String nameP;// Nombre del profesor
+    private String dayC;// Dia en que se imparte la clase
+    private String hora;// Hora en la que se recibe
+    private String work;// Próxima fecha de entrega de trabajo
+
+    //de igual manera se generan sus getter y setter
 
     public String getTitle() {
         return title;
