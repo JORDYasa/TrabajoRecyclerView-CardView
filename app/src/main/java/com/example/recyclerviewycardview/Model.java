@@ -17,12 +17,10 @@ public class Model {
     private String title;
     private String description;
     private int img;
-
-	//se crearon nuevos campos pedidos en la guia como y se generaron su getter y sus setter
-    private String nameP; //Nombre del profesor
-    private String dayC;  //Dia que se recibe la clase
-    private String hora;  //Hora en la que se recibe
-    private String work;  //Y dia en que se entregara el próximo trabajo
+    private String nameP;
+    private String dayC;
+    private String hora;
+    private String work;
 
     public String getTitle() {
         return title;

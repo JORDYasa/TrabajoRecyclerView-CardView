@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-	/*Creacion de menu para cerrar la app y guardar la asignatura*/
-
     <item android:id="@+id/itemguardar"
         android:title="Guardar"/>
 

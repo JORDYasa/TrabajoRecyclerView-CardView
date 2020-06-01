@@ -1,4 +1,4 @@
-﻿package com.example.recyclerviewycardview;
+package com.example.recyclerviewycardview;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -24,7 +24,7 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
-    //se define un objeto ArrayList utilizando el modelo creado
+    //se declaracion genral del arrelgo
     ArrayList<Model>models=new ArrayList<>();
 
     RecyclerView mRecycleView;
@@ -42,15 +42,13 @@ public class MainActivity extends AppCompatActivity {
 
     private ArrayList<Model> getMyList(){
         Model m=new Model();
-	
-	//estableciendo valores a los atributos según el modelo
 
         m.setTitle("Facultativa II");
         m.setDescription ("Descripción de Facultativa II");
         m.setImg(R.drawable.app);
         m.setNameP("Saira Cienfuego");
         m.setDayC("25 de mayo del 2020");
-        m.setHora("12:00");		 
+        m.setHora("12:00");
         m.setWork("26 de mayo del 2020");
         models.add(m);
 
@@ -61,14 +59,14 @@ public class MainActivity extends AppCompatActivity {
         m.setImg(R.drawable.files);
         m.setNameP("Jazcar Bravo");
         m.setDayC("25 de mayo del 2020");
-        m.setHora("12:00");		 
+        m.setHora("12:00");
         m.setWork("26 de mayo del 2020");
         models.add(m);
 
         m=new Model();
         m.setTitle("Planificación TIC");
         m.setDescription ("Descripción de Planificación");
-        m.setNameP("Miriam Cienfuego");
+        m.setNameP("Miriam Téllez");
         m.setDayC("25 de mayo del 2020");
         m.setHora("12:00");
         m.setWork("26 de mayo del 2020");
@@ -90,11 +88,11 @@ public class MainActivity extends AppCompatActivity {
 
         switch (item.getItemId()) {
             case R.id.itemclosed:
-                System.exit(0);
+                this.finish();
             case R.id.itemguardar:
 
                 final Dialog dlg = new Dialog(this);
-                dlg.setContentView(R.layout.activity_activityadd);//se hace referencia a que layout se esta llamando
+                dlg.setContentView(R.layout.activity_activityadd);
                 dlg.setTitle("Registro Asignatura");
                 dlg.setCancelable(false);
 
@@ -110,9 +108,8 @@ public class MainActivity extends AppCompatActivity {
                         EditText editText_dia=(EditText)dlg.findViewById(R.id.editText_dia);
                         EditText editText_hora=(EditText)dlg.findViewById(R.id.editText_hora);
                         EditText editText_fechaentr=(EditText)dlg.findViewById(R.id.editText_ProxTrab);
-			
 
-                        Model model=new Model();//se define un objeto del modelo creado en la clase Model
+                        Model model=new Model();//
                         model.setTitle(editText_asigna.getText().toString());
                         model.setDescription(editText_descrip.getText().toString());
                         model.setNameP(editText_profe.getText().toString());
@@ -123,8 +120,8 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-                        models.add(model);/// guardar los datos obetenidos al ArrayList
-                        myAdapter= new Adapter(v.getContext(), models);//se recarga el RecyclerView
+                        models.add(model);/// aguardar los datos de
+                        myAdapter= new Adapter(v.getContext(), models);//recargae el rcycler view
                         mRecycleView.setAdapter(myAdapter);
                         dlg.cancel();
                     }
